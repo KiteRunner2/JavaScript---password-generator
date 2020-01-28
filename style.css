@@ -118,6 +118,21 @@ button[disabled] {
   overflow: hidden;
 }
 
+.check-box {
+  float:left;
+  text-align: left;
+  font-family: sans-serif;
+
+}
+
+.textbox {
+  width: 30px;
+}
+
+.check-box-label {
+  font-size: 0.8rem;
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;

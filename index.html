@@ -25,7 +25,21 @@
           ></textarea>
         </div>
         <div class="card-footer">
+          <div class="check-box">
+          <input type="checkbox" name="uppercase" id="chckUppercase" checked>
+          <label class="check-box-label">Uppercase</label><br>
+          <input type="checkbox" name="lowercase" id="chckLowercase" checked>
+          <label class="check-box-label">Lowercase</label><br>
+          <input type="checkbox" name="number" id="chckNumber" checked>
+          <label class="check-box-label">Number</label><br>
+          <input type="checkbox" name="symbol" id="chckSymbol" checked>
+          <label class="check-box-label">Symbol</label><br>
+          <input type="range" min="8" max="128" value="12" class="slider" id="slider">
+          <input type="text" id="passlen" class="textbox">
+          </div>
+          
           <button id="generate" class="btn">Generate Password</button>
+          
         </div>
       </div>
     </div>
