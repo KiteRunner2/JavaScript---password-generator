@@ -14,7 +14,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: #3C7A89;
 }
 
 .wrapper {
@@ -27,11 +27,11 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: #2E4756;
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: #9FA2B2;
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -52,6 +52,8 @@ header {
 
 .card-body {
   min-height: 100px;
+  background-color: #3C7A89;
+  color:#16262E;
 }
 
 .card-footer {
@@ -74,7 +76,7 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color:#2E4756;
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
@@ -112,26 +114,42 @@ button[disabled] {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
+  
   resize: none;
   overflow: hidden;
+  background-color: #9FA2B2;
 }
 
-.check-box {
+.check-box-left {
   float:left;
   text-align: left;
   font-family: sans-serif;
+  padding-top: 10px;
+  width: 50%;
+  margin: auto;
+
+}
+.check-box-right {
+  float:right;
+  text-align: center;
+  font-family: sans-serif;
+  width: 50%;
+  margin:auto;
 
 }
 
 .textbox {
   width: 30px;
+  background-color: #9FA2B2;
 }
 
 .check-box-label {
   font-size: 0.8rem;
+  color:#16262E;
 }
+
+
+
 
 @media (max-width: 690px) {
   .btn {
