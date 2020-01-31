@@ -10,3 +10,7 @@ How code works:
 2. I am using function in the loop (based on password length) to pick up random characters from "working string"
 3. After password is generated I am doing addtitional check if password contains characters required by user. If it does not contain required characters then password generation is invoked again.
 4. User has an option to copy password string to computer/mobile clipboard.
+
+Website with application: https://kiterunner2.github.io/Boothomework_03/
+
+
