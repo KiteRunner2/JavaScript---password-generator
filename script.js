@@ -3,15 +3,15 @@
 //take random character from input string.
 function generateRandCharacter(str)
   {
-    var num = Math.floor(Math.random()*str.length);
+    let num = Math.floor(Math.random()*str.length);
     return str[num];
   }
 
 //disables generate button if user selects no options
 function disableButton()
     {
-      var checkbox = document.querySelectorAll("input");
-      var button = document.getElementById("generate");
+      let checkbox = document.querySelectorAll("input");
+      let button = document.getElementById("generate");
       if ( checkbox[0].checked == false &&
            checkbox[1].checked == false &&
            checkbox[2].checked == false &&
@@ -22,20 +22,21 @@ function disableButton()
         else button.disabled = false;
     }
 
+    //function for password generation and validation
 function generatePassword()
     {
-      var digits = '0123456789';
-      var lowers = 'abcdefghijklmnopqrstuvwxyz';
-      var uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      var symbols ='!@#$%^&*()_+=?<>,.';
-      var workingString = '';
-      var password = '';
-      var pattSpec = /[!@#$%^&*()_+=?<>,.]/;
-      var pattUp = /[A-Z]/;
-      var pattLo = /[a-z]/;
-      var pattDig = /\d/;
+      let digits = '0123456789';
+      let lowers = 'abcdefghijklmnopqrstuvwxyz';
+      let uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      let symbols ='!@#$%^&*()_+=?<>,.';
+      let workingString = '';
+      let password = '';
+      let pattSpec = /[!@#$%^&*()_+=?<>,.]/;
+      let pattUp = /[A-Z]/;
+      let pattLo = /[a-z]/;
+      let pattDig = /\d/;
 
-      var checkbox = document.querySelectorAll("input");  
+      let checkbox = document.querySelectorAll("input");  
 
       if (checkbox[0].checked)
         {
@@ -53,7 +54,8 @@ function generatePassword()
         {
           workingString += symbols;
         }
-      
+      // loop to generate password and check if password meets user critiria.
+      // 
       while (true) {
 
         password = '';
@@ -120,14 +122,12 @@ function generatePassword()
           } 
         document.getElementById("password").value = password;
         break;
-
-    
     }
   }
 //copy password to clipboard
 function copyPass()
     {
-      var copyText = document.getElementById('password');
+      let copyText = document.getElementById('password');
       copyText.select();
       copyText.setSelectionRange(0,9999);
       document.execCommand('copy');
