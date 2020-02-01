@@ -57,13 +57,11 @@ function generatePassword()
       // loop to generate password and check if password meets user critiria.
       // 
       while (true) {
-
         password = '';
         for (n=1;n<=slider.value;n++)
         {
             password += generateRandCharacter(workingString);
         }
-    
         if (checkbox[0].checked)
             {
                 if (!pattUp.test(password))
@@ -77,7 +75,6 @@ function generatePassword()
                   continue;
                 }
             } 
-    
         if (checkbox[1].checked)
             {
                 if (!pattLo.test(password))
@@ -91,7 +88,6 @@ function generatePassword()
                   continue;
                 }
             } 
-        
         if (checkbox[2].checked)
             {
                 if (!pattDig.test(password))
@@ -106,7 +102,6 @@ function generatePassword()
                     continue;
                   }
               }
-    
         if (checkbox[3].checked)
             {
                 if (!pattSpec.test(password))
@@ -138,8 +133,8 @@ function copyPass()
 //adding listeneres, setting values     
 function init()
     {
-      var slider = document.getElementById("slider");
-      var output = document.getElementById("passlen");
+      let slider = document.getElementById("slider");
+      let output = document.getElementById("passlen");
       output.value = slider.value; 
       slider.oninput = function()
        {
@@ -150,8 +145,7 @@ function init()
       document.querySelectorAll("input")[2].addEventListener("click",disableButton);
       document.querySelectorAll("input")[3].addEventListener("click",disableButton);
       document.getElementById("generate").addEventListener("click",generatePassword);
-      document.getElementById("copy").addEventListener("click",copyPass);
-      
+      document.getElementById("copy").addEventListener("click",copyPass); 
     }   
 
 init();
