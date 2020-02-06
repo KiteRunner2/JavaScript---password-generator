@@ -1,4 +1,4 @@
-# Boothomework_03
+# Password Generator
  Password generator in JavaScript
 
 Application for password generation created in JavaScript.
