@@ -11,6 +11,6 @@ How code works:
 3. After password is generated I am doing addtitional check if password contains characters required by user. If it does not contain required characters then password generation is invoked again.
 4. User has an option to copy password string to computer/mobile clipboard.
 
-Website with application: https://kiterunner2.github.io/Boothomework_03/
+Website with application: https://rudzki.ca/live/passgen/index.html
 
 

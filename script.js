@@ -23,23 +23,15 @@ function disableButton()
     }
 
     //function for password generation and validation
-function generatePassword()
-    {
-      let digits = '0123456789';
-      let lowers = 'abcdefghijklmnopqrstuvwxyz';
-      let uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      let symbols ='!@#$%^&*()_+=?<>,.';
-      let workingString = '';
-      let password = '';
-      let pattSpec = /[!@#$%^&*()_+=?<>,.]/;
-      let pattUp = /[A-Z]/;
-      let pattLo = /[a-z]/;
-      let pattDig = /\d/;
-
-      let checkbox = document.querySelectorAll("input");  
-
-      if (checkbox[0].checked)
-        {
+function getWorkingString() {
+  const digits = '0123456789';
+  const lowers = 'abcdefghijklmnopqrstuvwxyz';
+  const uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const symbols ='!@#$%^&*()_+=?<>,.';
+  let workingString = '';
+  const checkbox = document.querySelectorAll("input"); 
+  if (checkbox[0].checked)
+      {
           workingString += uppers;
         }
       if (checkbox[1].checked)
@@ -54,6 +46,20 @@ function generatePassword()
         {
           workingString += symbols;
         }
+  return workingString;
+}
+
+function generatePassword()
+    {
+      
+      
+      let password = '';
+      let pattSpec = /[!@#$%^&*()_+=?<>,.]/;
+      let pattUp = /[A-Z]/;
+      let pattLo = /[a-z]/;
+      let pattDig = /\d/;
+      const checkbox = document.querySelectorAll("input"); 
+      const workingString = getWorkingString()
       // loop to generate password and check if password meets user critiria.
       // 
       while (true) {
