@@ -1,0 +1,28 @@
+{
+  "name": "JavaScript---password-generator",
+  "version": "1.0.0",
+  "description": "Password generator in JavaScript",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiteRunner2/JavaScript---password-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiteRunner2/JavaScript---password-generator/issues"
+  },
+  "homepage": "https://github.com/KiteRunner2/JavaScript---password-generator#readme",
+  "devDependencies": {
+    "webpack": "^5.47.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "terser-webpack-plugin": "^5.1.4"
+  }
+}
