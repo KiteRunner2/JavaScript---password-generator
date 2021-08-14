@@ -1,4 +1,5 @@
-//take random character from input string.
+const KEY = "generatedPasswordHistory";
+
 function generateRandCharacter(str) {
   let num = Math.floor(Math.random() * str.length);
   return str[num];
@@ -19,28 +20,29 @@ function disableButton() {
 }
 
 function savePassword(password) {
-  const key = "generatedPasswordHistory";
-  let history = localStorage.getItem(key);
+  let history = localStorage.getItem(KEY);
   let newHistory = [];
   if (!history) {
     const now = Date.now().toString();
     const data = {
-      [now]: password,
+      time: now,
+      password,
     };
-    newHistory.push(data);
-    localStorage.setItem(key, JSON.stringify(newHistory));
+    newHistory.unshift(data);
+    localStorage.setItem(KEY, JSON.stringify(newHistory));
   } else {
     const now = Date.now().toString();
     const data = {
-      [now]: password,
+      time: now,
+      password,
     };
     history = JSON.parse(history);
-    newHistory = [...history, data];
-    localStorage.setItem(key, JSON.stringify(newHistory));
+    newHistory = [data, ...history];
+    newHistory.length = 10;
+    localStorage.setItem(KEY, JSON.stringify(newHistory));
   }
 }
 
-//function for password generation and validation
 function getWorkingString() {
   const digits = "0123456789";
   const lowers = "abcdefghijklmnopqrstuvwxyz";
@@ -121,7 +123,34 @@ function generatePassword() {
     if (isMatchingConditions(password)) break;
   }
   savePassword(password);
+
   document.getElementById("password").value = password;
+  displayHistory();
+}
+
+function displayHistory() {
+  const history = getHistory();
+  const historybox = document.getElementById("history");
+  historybox.innerHTML = "";
+  history.forEach((el, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${index + 1}. ${el.password}`;
+    historybox.appendChild(li);
+  });
+}
+
+function clearPasswordHistory() {
+  localStorage.removeItem(KEY);
+  displayHistory();
+}
+
+function getHistory() {
+  const value = localStorage.getItem(KEY);
+  if (value) {
+    const history = JSON.parse(value);
+    return history;
+  }
+  return [];
 }
 
 function copyPassToClipboard() {
@@ -157,6 +186,10 @@ function init() {
   document
     .getElementById("copy")
     .addEventListener("click", copyPassToClipboard);
+  document
+    .getElementById("clearHistory")
+    .addEventListener("click", clearPasswordHistory);
+  displayHistory();
 }
 
 init();
