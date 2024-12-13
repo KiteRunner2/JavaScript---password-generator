@@ -43,7 +43,7 @@ header {
 }
 
 .card-header::after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 100%;
   background: #e7e9eb;
@@ -61,7 +61,7 @@ header {
 }
 
 .card-footer::before {
-  content: " ";
+  content: ' ';
   display: block;
   width: 100%;
   background: #e7e9eb;
@@ -69,7 +69,7 @@ header {
 }
 
 .card-footer::after {
-  content: " ";
+  content: ' ';
   display: block;
   clear: both;
 }
@@ -78,8 +78,7 @@ header {
   border: none;
   background-color: #2e4756;
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
   font-size: 22px;

@@ -1,4 +1,4 @@
-const KEY = "generatedPasswordHistory";
+const KEY = 'generatedPasswordHistory';
 
 function generateRandCharacter(str) {
   let num = Math.floor(Math.random() * str.length);
@@ -6,8 +6,8 @@ function generateRandCharacter(str) {
 }
 
 function disableButton() {
-  const checkbox = document.querySelectorAll("input");
-  const button = document.getElementById("generate");
+  const checkbox = document.querySelectorAll('input');
+  const button = document.getElementById('generate');
   button.disabled = false;
   if (
     checkbox[0].checked == false &&
@@ -44,12 +44,12 @@ function savePassword(password) {
 }
 
 function getWorkingString() {
-  const digits = "0123456789";
-  const lowers = "abcdefghijklmnopqrstuvwxyz";
-  const uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const symbols = "!@#$%^&*()_+=?<>,.";
-  let workingString = "";
-  const checkbox = document.querySelectorAll("input");
+  const digits = '0123456789';
+  const lowers = 'abcdefghijklmnopqrstuvwxyz';
+  const uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const symbols = '!@#$%^&*()_+=?<>,.';
+  let workingString = '';
+  const checkbox = document.querySelectorAll('input');
   if (checkbox[0].checked) {
     workingString += uppers;
   }
@@ -72,7 +72,7 @@ function isMatchingConditions(password) {
   const pattDig = /\d/;
   let isMatching = true;
 
-  const checkbox = document.querySelectorAll("input");
+  const checkbox = document.querySelectorAll('input');
   if (checkbox[0].checked) {
     if (!pattUp.test(password)) {
       isMatching = false;
@@ -113,10 +113,10 @@ function isMatchingConditions(password) {
 }
 
 function generatePassword() {
-  let password = "";
+  let password = '';
   const workingString = getWorkingString();
   while (true) {
-    password = "";
+    password = '';
     for (n = 1; n <= slider.value; n++) {
       password += generateRandCharacter(workingString);
     }
@@ -124,16 +124,16 @@ function generatePassword() {
   }
   savePassword(password);
 
-  document.getElementById("password").value = password;
+  document.getElementById('password').value = password;
   displayHistory();
 }
 
 function displayHistory() {
   const history = getHistory();
-  const historybox = document.getElementById("history");
-  historybox.innerHTML = "";
+  const historybox = document.getElementById('history');
+  historybox.innerHTML = '';
   history.forEach((el, index) => {
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.textContent = `${index + 1}. ${el.password}`;
     historybox.appendChild(li);
   });
@@ -154,41 +154,27 @@ function getHistory() {
 }
 
 function copyPassToClipboard() {
-  let copyText = document.getElementById("password");
+  let copyText = document.getElementById('password');
   copyText.select();
   copyText.setSelectionRange(0, 9999);
-  document.execCommand("copy");
-  alert("Copied the text: " + copyText.value);
+  document.execCommand('copy');
+  alert('Copied the text: ' + copyText.value);
 }
 
 function init() {
-  let slider = document.getElementById("slider");
-  let output = document.getElementById("passlen");
+  let slider = document.getElementById('slider');
+  let output = document.getElementById('passlen');
   output.value = slider.value;
   slider.oninput = function () {
     output.value = this.value;
   };
-  document
-    .querySelectorAll("input")[0]
-    .addEventListener("click", disableButton);
-  document
-    .querySelectorAll("input")[1]
-    .addEventListener("click", disableButton);
-  document
-    .querySelectorAll("input")[2]
-    .addEventListener("click", disableButton);
-  document
-    .querySelectorAll("input")[3]
-    .addEventListener("click", disableButton);
-  document
-    .getElementById("generate")
-    .addEventListener("click", generatePassword);
-  document
-    .getElementById("copy")
-    .addEventListener("click", copyPassToClipboard);
-  document
-    .getElementById("clearHistory")
-    .addEventListener("click", clearPasswordHistory);
+  document.querySelectorAll('input')[0].addEventListener('click', disableButton);
+  document.querySelectorAll('input')[1].addEventListener('click', disableButton);
+  document.querySelectorAll('input')[2].addEventListener('click', disableButton);
+  document.querySelectorAll('input')[3].addEventListener('click', disableButton);
+  document.getElementById('generate').addEventListener('click', generatePassword);
+  document.getElementById('copy').addEventListener('click', copyPassToClipboard);
+  document.getElementById('clearHistory').addEventListener('click', clearPasswordHistory);
   displayHistory();
 }
 
