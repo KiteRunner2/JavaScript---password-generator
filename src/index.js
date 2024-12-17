@@ -157,7 +157,7 @@ function copyPassToClipboard() {
   let copyText = document.getElementById('password');
   copyText.select();
   copyText.setSelectionRange(0, 9999);
-  document.execCommand('copy');
+  navigator.clipboard.writeText(copyText.value);
   alert('Copied the text: ' + copyText.value);
 }
 
