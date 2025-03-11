@@ -113,33 +113,42 @@ function isMatchingConditions(password) {
 }
 
 function generatePassword() {
-  let password = '';
-  const workingString = getWorkingString();
+  const generateBtn = document.getElementById('generate');
   
-  // Show loading state on the button
-  const btn = document.getElementById('generate');
-  const originalText = btn.textContent;
-  btn.textContent = 'Generating...';
-  btn.disabled = true;
+  // Store the original text
+  const originalText = generateBtn.textContent;
   
-  // Use setTimeout to allow UI to update before password generation
-  setTimeout(() => {
+  // Update button state
+  generateBtn.textContent = 'Generating...';
+  generateBtn.disabled = true;
+  
+  try {
+    // Generate the password
+    let password = '';
+    const workingString = getWorkingString();
+    const slider = document.getElementById('slider');
+    
     while (true) {
       password = '';
-      for (n = 1; n <= slider.value; n++) {
+      for (let n = 1; n <= slider.value; n++) {
         password += generateRandCharacter(workingString);
       }
       if (isMatchingConditions(password)) break;
     }
+    
+    // Save and display the password
     savePassword(password);
-
     document.getElementById('password').value = password;
     displayHistory();
-    
-    // Reset button state
-    btn.textContent = originalText;
-    btn.disabled = false;
-  }, 10);
+  } catch (error) {
+    console.error('Error generating password:', error);
+  } finally {
+    // Always reset the button state, even if an error occurs
+    setTimeout(() => {
+      generateBtn.textContent = originalText;
+      generateBtn.disabled = false;
+    }, 100);
+  }
 }
 
 function displayHistory() {
