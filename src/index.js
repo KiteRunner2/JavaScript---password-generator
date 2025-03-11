@@ -115,17 +115,31 @@ function isMatchingConditions(password) {
 function generatePassword() {
   let password = '';
   const workingString = getWorkingString();
-  while (true) {
-    password = '';
-    for (n = 1; n <= slider.value; n++) {
-      password += generateRandCharacter(workingString);
+  
+  // Show loading state on the button
+  const btn = document.getElementById('generate');
+  const originalText = btn.textContent;
+  btn.textContent = 'Generating...';
+  btn.disabled = true;
+  
+  // Use setTimeout to allow UI to update before password generation
+  setTimeout(() => {
+    while (true) {
+      password = '';
+      for (n = 1; n <= slider.value; n++) {
+        password += generateRandCharacter(workingString);
+      }
+      if (isMatchingConditions(password)) break;
     }
-    if (isMatchingConditions(password)) break;
-  }
-  savePassword(password);
+    savePassword(password);
 
-  document.getElementById('password').value = password;
-  displayHistory();
+    document.getElementById('password').value = password;
+    displayHistory();
+    
+    // Reset button state
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }, 10);
 }
 
 function displayHistory() {
@@ -133,7 +147,8 @@ function displayHistory() {
   const historybox = document.getElementById('history');
   historybox.innerHTML = '';
   history.forEach((el, index) => {
-    const li = document.createElement('li');
+    const li = document.createElement('div');
+    li.classList.add('history-item');
     li.textContent = `${index + 1}. ${el.password}`;
     historybox.appendChild(li);
   });
@@ -155,10 +170,24 @@ function getHistory() {
 
 function copyPassToClipboard() {
   let copyText = document.getElementById('password');
+  const password = copyText.value;
+  
+  if (!password) return;
+  
   copyText.select();
   copyText.setSelectionRange(0, 9999);
-  navigator.clipboard.writeText(copyText.value);
-  alert('Copied the text: ' + copyText.value);
+  navigator.clipboard.writeText(password);
+  
+  // Visual feedback instead of alert
+  const btn = document.getElementById('copy');
+  const originalText = btn.textContent;
+  btn.textContent = 'Copied!';
+  btn.style.backgroundColor = 'var(--success)';
+  
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.backgroundColor = '';
+  }, 1500);
 }
 
 function init() {
