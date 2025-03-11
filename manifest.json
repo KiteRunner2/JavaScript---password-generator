@@ -1,7 +1,7 @@
 {
   "name": "Secure Password Generator",
   "short_name": "SecPassGen",
-  "description": "Secure password generator",
+  "description": "Generate strong, secure passwords with customizable options",
   "icons": [
     {
       "src": "./icons/android-chrome-192x192.png",
@@ -14,8 +14,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#29BDBB",
-  "background_color": "#29BDBB",
+  "theme_color": "#2B6CB0",
+  "background_color": "#2B6CB0",
   "display": "standalone",
   "orientation": "portrait",
   "start_url": "https://safe-password-generator.netlify.app"
