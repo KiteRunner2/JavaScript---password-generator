@@ -2,27 +2,29 @@
 
 A modern, feature-rich password generator built with vanilla JavaScript that helps create strong, customizable passwords instantly.
 
-![Password Generator Screenshot](https://user-images.githubusercontent.com/your-username/your-repo/screenshot.png)
-
 ## ✨ Features
 
 - **Customizable Password Composition**
+
   - Include uppercase letters (A-Z)
   - Include lowercase letters (a-z)
   - Include numbers (0-9)
-  - Include special characters (!@#$%^&*()_+=?<>,.)
-  
+  - Include special characters (!@#$%^&\*()\_+=?<>,.)
+
 - **Flexible Length Options**
+
   - Choose password length from 8 to 128 characters
   - Default length of 16 characters
 
 - **User-Friendly Interface**
+
   - Visual sliders for easy length adjustment
   - One-click password generation
   - Copy to clipboard functionality
   - Visual feedback for successful actions
 
 - **Password History**
+
   - Stores last 10 generated passwords locally
   - Quick access to recently generated passwords
   - Clear history option for privacy
@@ -36,7 +38,7 @@ A modern, feature-rich password generator built with vanilla JavaScript that hel
 
 ## 🚀 Live Demo
 
-Try it out: [Secure Password Generator](https://rudzki.ca/live/passgen/index.html)
+Try it out: [Secure Password Generator](https://safe-password-generator.netlify.app)
 
 ## 💻 Technologies Used
 
@@ -44,22 +46,6 @@ Try it out: [Secure Password Generator](https://rudzki.ca/live/passgen/index.htm
 - HTML5
 - CSS3
 - Local Storage API
-
-## 🔧 Development
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/password-generator.git
-
-# Navigate to the project directory
-cd password-generator
-
-# Install dependencies
-yarn install
-
-# Run locally
-yarn start
-```
 
 ## 🔍 Security Notes
 
