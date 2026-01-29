@@ -109,6 +109,62 @@ header h1 {
     inset 0 0 20px rgba(0, 255, 65, 0.05);
 }
 
+/* Strength meter */
+.strength-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.strength-bar {
+  flex: 1;
+  height: 0.5rem;
+  background: var(--input-bg);
+  border-radius: 0.25rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  border-radius: 0.25rem;
+  transition: width 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strength-weak {
+  width: 25%;
+  background-color: #ff0040;
+  box-shadow: 0 0 8px rgba(255, 0, 64, 0.5);
+}
+
+.strength-fair {
+  width: 50%;
+  background-color: #ff8800;
+  box-shadow: 0 0 8px rgba(255, 136, 0, 0.5);
+}
+
+.strength-strong {
+  width: 75%;
+  background-color: #ffcc00;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+}
+
+.strength-very-strong {
+  width: 100%;
+  background-color: #00ff41;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+.strength-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
+}
+
 .card-footer {
   padding: 1.5rem;
   border-top: 1px solid var(--border);

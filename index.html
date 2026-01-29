@@ -28,6 +28,12 @@
             value=""
             aria-label="Generated Password"
           ></textarea>
+          <div id="strengthContainer" class="strength-container" style="display: none;">
+            <div class="strength-bar">
+              <div id="strengthFill" class="strength-fill"></div>
+            </div>
+            <span id="strengthLabel" class="strength-label"></span>
+          </div>
         </div>
         
         <div class="card-footer">
@@ -51,6 +57,11 @@
               <div class="check-container">
                 <input type="checkbox" name="symbol" id="chckSymbol" checked />
                 <label class="check-box-label" for="chckSymbol">Include Symbols</label>
+              </div>
+
+              <div class="check-container">
+                <input type="checkbox" name="ambiguous" id="chckAmbiguous" />
+                <label class="check-box-label" for="chckAmbiguous">Exclude Ambiguous Characters</label>
               </div>
             </div>
             
