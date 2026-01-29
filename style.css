@@ -5,16 +5,21 @@
 }
 
 :root {
-  --primary: #2b6cb0;
-  --primary-dark: #1e4e8c;
-  --secondary: #4fd1c5;
-  --dark: #2d3748;
-  --light: #f7fafc;
-  --success: #48bb78;
-  --card-bg: #ffffff;
-  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --input-bg: #edf2f7;
-  --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --bg: #0a0a0a;
+  --card-bg: rgba(0, 15, 0, 0.85);
+  --primary: #00ff41;
+  --primary-dark: #00cc33;
+  --secondary: #20c20e;
+  --secondary-dark: #17a00b;
+  --success: #00ff41;
+  --danger: #ff0040;
+  --danger-dark: #cc0033;
+  --text: #00ff41;
+  --text-muted: #338033;
+  --input-bg: #050505;
+  --border: rgba(0, 255, 65, 0.12);
+  --card-shadow: 0 0 20px rgba(0, 255, 65, 0.08), 0 0 60px rgba(0, 255, 65, 0.03);
+  --font-main: 'Courier New', 'Lucida Console', Monaco, monospace;
 }
 
 html,
@@ -27,8 +32,17 @@ body,
 
 body {
   font-family: var(--font-main);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: var(--dark);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 255, 65, 0.07) 0%, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.015) 2px,
+      rgba(0, 255, 65, 0.015) 4px
+    );
+  color: var(--text);
   line-height: 1.5;
 }
 
@@ -44,16 +58,22 @@ header {
 }
 
 header h1 {
-  color: var(--light);
+  color: var(--primary);
   margin: 0;
   font-weight: 700;
   font-size: 2.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow:
+    0 0 10px rgba(0, 255, 65, 0.8),
+    0 0 30px rgba(0, 255, 65, 0.5),
+    0 0 60px rgba(0, 255, 65, 0.3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .card {
   background-color: var(--card-bg);
-  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
   box-shadow: var(--card-shadow);
   margin-bottom: 1.5rem;
   overflow: hidden;
@@ -70,21 +90,28 @@ header h1 {
   padding: 1.5rem;
   text-align: center;
   background-color: var(--input-bg);
-  border: none;
-  border-radius: 0.5rem;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.03);
   min-height: 100px;
   resize: none;
   margin: 0;
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 #password:focus {
-  outline: 2px solid var(--primary);
+  outline: none;
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 2px rgba(0, 255, 65, 0.15),
+    inset 0 0 20px rgba(0, 255, 65, 0.05);
 }
 
 .card-footer {
   padding: 1.5rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--border);
 }
 
 .options-container {
@@ -122,7 +149,8 @@ header h1 {
 
 .check-box-label {
   font-size: 1rem;
-  color: var(--dark);
+  color: var(--text);
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
 }
 
 .slider-container {
@@ -133,6 +161,8 @@ header h1 {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  color: var(--text);
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
 }
 
 .range-wrapper {
@@ -144,10 +174,11 @@ header h1 {
 .slider {
   flex: 1;
   -webkit-appearance: none;
-  height: 0.5rem;
-  background: #cbd5e0;
+  height: 0.35rem;
+  background: #0a1a0a;
   border-radius: 0.25rem;
   outline: none;
+  border: 1px solid rgba(0, 255, 65, 0.1);
 }
 
 .slider::-webkit-slider-thumb {
@@ -158,6 +189,12 @@ header h1 {
   border-radius: 50%;
   background: var(--primary);
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+  transition: box-shadow 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 16px rgba(0, 255, 65, 0.9);
 }
 
 .slider::-moz-range-thumb {
@@ -167,16 +204,24 @@ header h1 {
   background: var(--primary);
   cursor: pointer;
   border: none;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+.slider::-moz-range-thumb:hover {
+  box-shadow: 0 0 16px rgba(0, 255, 65, 0.9);
 }
 
 .textbox {
   width: 3.5rem;
   text-align: center;
   font-size: 1rem;
+  font-family: var(--font-main);
   padding: 0.35rem;
-  border: 1px solid #cbd5e0;
+  border: 1px solid var(--border);
   border-radius: 0.25rem;
   background-color: var(--input-bg);
+  color: var(--primary);
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.4);
 }
 
 .buttons-container {
@@ -188,20 +233,27 @@ header h1 {
 }
 
 .btn {
-  border: none;
-  background-color: var(--primary);
-  border-radius: 0.5rem;
-  color: white;
+  border: 1px solid var(--primary);
+  background-color: transparent;
+  border-radius: 0.25rem;
+  color: var(--primary);
+  font-family: var(--font-main);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.75rem 1.5rem;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+  transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
 }
 
 .btn:hover {
-  background-color: var(--primary-dark);
+  background-color: rgba(0, 255, 65, 0.1);
+  box-shadow:
+    0 0 12px rgba(0, 255, 65, 0.4),
+    inset 0 0 12px rgba(0, 255, 65, 0.05);
 }
 
 .btn:active {
@@ -209,26 +261,46 @@ header h1 {
 }
 
 .btn-copy {
-  background-color: var(--secondary);
-  color: var(--dark);
+  border-color: var(--secondary);
+  color: var(--secondary);
+  text-shadow: 0 0 6px rgba(32, 194, 14, 0.5);
+  box-shadow: 0 0 8px rgba(32, 194, 14, 0.15);
 }
 
 .btn-copy:hover {
-  background-color: #36b9ae;
+  background-color: rgba(32, 194, 14, 0.1);
+  box-shadow:
+    0 0 12px rgba(32, 194, 14, 0.4),
+    inset 0 0 12px rgba(32, 194, 14, 0.05);
 }
 
 .btn-clear {
-  background-color: #e53e3e;
+  border-color: var(--danger);
+  color: var(--danger);
+  text-shadow: 0 0 6px rgba(255, 0, 64, 0.5);
+  box-shadow: 0 0 8px rgba(255, 0, 64, 0.15);
 }
 
 .btn-clear:hover {
-  background-color: #c53030;
+  background-color: rgba(255, 0, 64, 0.1);
+  box-shadow:
+    0 0 12px rgba(255, 0, 64, 0.4),
+    inset 0 0 12px rgba(255, 0, 64, 0.05);
 }
 
 button[disabled] {
   cursor: not-allowed;
-  opacity: 0.7;
-  background-color: #a0aec0;
+  opacity: 0.3;
+  border-color: #1a3a1a;
+  color: #1a3a1a;
+  background-color: transparent;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+button[disabled]:hover {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* History section */
@@ -243,9 +315,12 @@ button[disabled] {
 }
 
 .history-title {
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 1rem;
-  color: var(--dark);
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
 }
 
 .history-list {
@@ -256,14 +331,34 @@ button[disabled] {
   overflow-y: auto;
 }
 
+.history-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: var(--input-bg);
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 65, 0.2);
+  border-radius: 2px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 65, 0.4);
+}
+
 .history-item {
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
   background-color: var(--input-bg);
-  border-radius: 0.25rem;
+  border-radius: 0.15rem;
+  border-left: 2px solid var(--primary);
   word-break: break-all;
+  color: var(--primary);
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
 }
 
 /* Responsive */
@@ -271,32 +366,32 @@ button[disabled] {
   .wrapper {
     padding: 1rem 0.5rem;
   }
-  
+
   header h1 {
     font-size: 2rem;
   }
-  
+
   .card {
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
   }
-  
+
   .card-body, .card-footer, .history-box {
     padding: 1rem;
   }
-  
+
   .options-container {
     gap: 1rem;
   }
-  
+
   .options-left, .options-right {
     min-width: 100%;
   }
-  
+
   .buttons-container {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .btn {
     width: 100%;
   }
@@ -306,7 +401,7 @@ button[disabled] {
   header h1 {
     font-size: 1.5rem;
   }
-  
+
   #password {
     font-size: 1rem;
     padding: 1rem;
