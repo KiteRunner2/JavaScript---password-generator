@@ -158,7 +158,14 @@ function displayHistory() {
   history.forEach((el, index) => {
     const li = document.createElement('div');
     li.classList.add('history-item');
-    li.textContent = `${index + 1}. ${el.password}`;
+    const date = new Date(Number(el.time));
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();
+    const hh = String(date.getHours()).padStart(2, '0');
+    const min = String(date.getMinutes()).padStart(2, '0');
+    const ss = String(date.getSeconds()).padStart(2, '0');
+    li.textContent = `${index + 1}. ${el.password} — ${dd}-${mm}-${yyyy} ${hh}:${min}:${ss}`;
     historybox.appendChild(li);
   });
 }
