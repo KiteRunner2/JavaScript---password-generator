@@ -138,7 +138,23 @@ function displayHistory() {
     const hh = String(date.getHours()).padStart(2, '0');
     const min = String(date.getMinutes()).padStart(2, '0');
     const ss = String(date.getSeconds()).padStart(2, '0');
-    li.textContent = index + 1 + '. ' + el.password + ' \u2014 ' + dd + '-' + mm + '-' + yyyy + ' ' + hh + ':' + min + ':' + ss;
+
+    const textSpan = document.createElement('span');
+    textSpan.textContent = index + 1 + '. ' + el.password + ' \u2014 ' + dd + '-' + mm + '-' + yyyy + ' ' + hh + ':' + min + ':' + ss;
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'btn-history-copy';
+    copyBtn.textContent = 'Copy';
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText(el.password);
+      copyBtn.textContent = 'Copied!';
+      setTimeout(function() {
+        copyBtn.textContent = 'Copy';
+      }, 1500);
+    });
+
+    li.appendChild(textSpan);
+    li.appendChild(copyBtn);
     historybox.appendChild(li);
   });
 }
