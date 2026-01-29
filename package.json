@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "Password generator in JavaScript",
   "main": "script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KiteRunner2/JavaScript---password-generator.git"
