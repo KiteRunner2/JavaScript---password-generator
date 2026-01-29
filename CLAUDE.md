@@ -3,23 +3,18 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Commands
-- `yarn build` or `npm run build` - Build the project (uses webpack)
+- `npm run build` - Build the project (webpack, requires webpack to be installed)
 - No automated tests currently configured
-- To run locally: Open index.html directly in browser or use a local HTTP server
+- To run locally: Open `index.html` directly in a browser (no build step needed; `src/index.js` is loaded via script tag)
 
 ## Architecture Overview
-This is a client-side password generator built with vanilla JavaScript:
+Client-side password generator built with vanilla JavaScript — single-page app with no framework or build step required for development.
 
-- **Core Logic**: Password generation happens in src/index.js with character set building, random selection, and validation
-- **State Management**: Uses localStorage to persist password history (last 10 passwords) with the key 'generatedPasswordHistory'
-- **UI Pattern**: Event-driven interface with checkbox validation to enable/disable generation button
-- **Security Model**: All operations are client-side only - no server communication
-
-## Key Functions
-- `generateRandCharacter()` - Random character selection from character sets
-- `savePassword()` - Manages localStorage persistence with 10-item limit
-- `disableButton()` - UI state management based on checkbox selections
-- `getWorkingString()` - Builds character sets based on user criteria
+- **Entry point**: `index.html` loads `style.css` and `src/index.js` directly
+- **All logic** lives in `src/index.js` — the `init()` function at the bottom wires up all event listeners on load
+- **Generation flow**: `generatePassword()` → `getWorkingString()` (builds charset from checked checkboxes) → loops `generateRandCharacter()` until `isMatchingConditions()` validates the password contains at least one char from each selected category
+- **State**: localStorage key `'generatedPasswordHistory'` stores an array of `{time, password}` objects, capped at 10 entries
+- **Checkbox ↔ button coupling**: `disableButton()` disables the generate button when no checkboxes are checked; checkboxes are identified by DOM index position (0=uppercase, 1=lowercase, 2=numbers, 3=symbols)
 
 ## Code Style Guidelines
 - **Strings**: Use single quotes for string literals
